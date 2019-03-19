@@ -2,7 +2,14 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/signup">Signup</router-link> |
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/logout">Logout</router-link> |
+      <router-link to="/users/:id">User Show</router-link> |
+      <router-link to="/users/">User Edit</router-link> |
+      <router-link to="/categories">Categories Index</router-link> |
+      <router-link to="/categories/:id">Category Show</router-link>
+
     </div>
     <router-view/>
   </div>
@@ -10,7 +17,7 @@
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -29,3 +36,4 @@
   color: #42b983;
 }
 </style>
+
