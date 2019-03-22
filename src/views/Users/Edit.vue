@@ -24,6 +24,10 @@
           <input type="password" class="form-control" v-model="user.password">
         </div>
         <div class="form-group">
+          <label>Password Confirmation:</label> 
+          <input type="password" class="form-control" v-model="user.password_confirmation">
+        </div>
+        <div class="form-group">
           <label>Email:</label>
           <input type="email" class="form-control" v-model="user.email">
         </div>
@@ -40,7 +44,7 @@
         <input type="submit" class="btn btn-primary" value="Submit">
       </form>
 
-  <button v-on:click="destroyUser()">Burn with Fire</button><br>
+<!--   <button v-on:click="destroyUser()">Burn with Fire</button><br> -->
   </div>
 </template>
 
@@ -68,6 +72,7 @@ export default {
       var params = {
         name: this.user.name,
         password: this.user.password,
+        password_confirmation: this.user.password_confirmation,
         email: this.user.email,
         address: this.user.address,
         bio: this.user.bio,

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
+    <h1>Start Page</h1>
   </div>
 </template>
 

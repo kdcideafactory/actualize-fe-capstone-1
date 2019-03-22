@@ -1,12 +1,14 @@
 <template>
   <div class="categories-show">
     <h1>{{ category.name }}</h1>
-    <p>Category Id: {{ category.id }}</p>
-  </div>
-</template>
 
-<style>
-</style>
+    <div v-for="product in category.products">
+      <h3>{{ product.name }}</h3>
+    </div>
+
+  </div>
+
+</template>
 
 <script>
 import axios from "axios";
@@ -14,7 +16,8 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      category: {}
+      category: {},
+      product: {}
     };
   },
   created: function() {

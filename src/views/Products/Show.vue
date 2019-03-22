@@ -1,6 +1,23 @@
 <template>
   <div class="products-show">
+    <div v-for="product in products">
+
+    Category: <input type="text" v-model="newProductCategoryId">
+    Name: <input type="text" v-model="newUserName">
+    Description: <input type="email" v-model="newProductDescription">
+    Price: <input type="text" v-model="newProductPrice">
+    QOH: <input type="text" v-model="newProductQoh">
+    
+<!--     User Id: <input type="text" v-model="newUserBio"> ###this needs to pull the current user over something current user =) -->
+
     <h1>{{ product.name }}</h1>
+    <p>Description: {{ product.description }}</p>
+    <p>Price: {{ product.price }}</p>
+    <p>Price: {{ product.price }}</p>
+    <p>QOH: {{ product.qoh }}</p>
+    <p>QOH: {{ product.qoh }}</p>
+  </div>
+
   </div>
 </template>
 
@@ -8,50 +25,20 @@
 </style>
 
 <script>
+import axios from "axios";
+
 export default {
   data: function() {
     return {
-      products: {},
-      name: "",
-      description: "",
-      price: "",
-      qoh: "",
-      errors: []
+      products: []
     };
   },
-  methods: {
-    submit: function() {
-      var params = {
-        name: this.name,
-        email: this.email,
-        password: this.password,
-        password_confirmation: this.passwordConfirmation,
-        address: this.address,
-        bio: this.bio,
-        avatar: this.avatar
-      };
-      axios
-        .post("/api/users", params)
-        .then(response => {
-          this.$router.push("/login");
-        })
-        .catch(error => {
-          this.errors = error.response.data.errors;
-        });
-    }
-  }
+  created: function() {
+    axios.get("/api/products/" + this.$route.params.id).then(response => {
+      console.log(response.data);
+      this.product = response.data;
+    });
+  },
+  methods: {}
 };
 </script>
-
-
-data: function() {
-  return {
-    products: {},
-    name: "",
-    description: "",
-    price: "",
-    qoh: "",
-    errors: []
-  };
-},
-

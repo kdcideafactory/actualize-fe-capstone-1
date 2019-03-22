@@ -5,10 +5,24 @@
       <router-link to="/signup">Signup</router-link> |
       <router-link to="/login">Login</router-link> |
       <router-link to="/logout">Logout</router-link> |
+
       <router-link to="/users/:id">User Show</router-link> |
       <router-link to="/users/">User Edit</router-link> |
+
       <router-link to="/categories">Categories Index</router-link> |
-      <router-link to="/categories/:id">Category Show</router-link>
+      <router-link to="/categories/:id">Category Show</router-link> |
+
+      <router-link to="/conversations">Conversations Index</router-link> |
+      <router-link to="/conversations/:id">Conversations Show</router-link> |
+
+      <router-link to="/products/new">Products New</router-link> |
+      <router-link to="/products/:id">Products Show</router-link> |
+
+      <router-link to="/messages">Messages Index</router-link> |
+      <router-link to="/messages/:id">Messages Show</router-link> |
+
+      <router-link to="/images">Images Index</router-link> |
+      <router-link to="/images/:id">Images Show</router-link>
 
     </div>
     <router-view/>

@@ -10,7 +10,7 @@
     <p>Email: {{ user.email }}</p>
     <p>Address: {{ user.address }}</p>
     <p>Bio: {{ user.bio }}</p>
-    <p>Avatar: {{ user.avatar }}</p>
+    <img :src="user.avatar">
   </div>
 </template>
 

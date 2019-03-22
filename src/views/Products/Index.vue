@@ -1,9 +1,8 @@
 <template>
-  <div class="conversations-index">
-    <div v-for="conversation in conversations">
-    <h1>{{ conversation.product.id }}</h1>
+  <div class="products-index">
+    <div v-for="product in products">
 <!--     Name: <input type="text" v-model="newCategoryName"> -->
-    <h1>{{ category.name }}</h1>
+    <h1><a v-bind:href="'/products/' + product.id"> {{ product.name }}</a></h1>
     </div>
   </div>
 
@@ -15,13 +14,13 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      categories: []
+      products: []
     };
   },
   created: function() {
-    axios.get("/api/categories").then(response => {
+    axios.get("/api/products").then(response => {
       console.log(response.data);
-      this.categories = response.data;
+      this.products = response.data;
     });
   },
   methods: {}
