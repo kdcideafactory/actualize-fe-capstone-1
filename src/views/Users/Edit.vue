@@ -1,12 +1,4 @@
 <template>
-<!--   <div class="users-edit">
-    <h1>{{ user.name }}</h1>
-    <p>Password: {{ user.password }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Address: {{ user.address }}</p>
-    <p>Bio: {{ user.bio }}</p>
-    <p>Avatar: {{ user.avatar }}</p>
-  </div> -->
   <div class="users-edit">
     <h1> Logged in as: {{ user.name }}!</h1>
     
@@ -49,15 +41,19 @@
 </template>
 
 <style>
+img {
+  width: 150px;
+  border-radius: 2px;
+}
 </style>
 
 <script>
 import axios from "axios";
-
 export default {
   data: function() {
     return {
-      user: {}
+      user: {},
+      errors: []
     };
   },
   created: function() {
@@ -66,7 +62,6 @@ export default {
       this.user = response.data;
     });
   },
-
   methods: {
     submit: function() {
       var params = {
@@ -78,8 +73,8 @@ export default {
         bio: this.user.bio,
         avatar: this.user.avatar
       };
-
       console.log(params);
+
       axios
         .patch("/api/users/" + this.user.id, params)
         .then(response => {
@@ -90,6 +85,7 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
+
     destroyUser: function() {
       axios.delete("/api/users/" + this.user.id).then(response => {
         console.log("Sorry to see you go.", response.data);
@@ -99,3 +95,12 @@ export default {
   }
 };
 </script>
+
+<!--   <div class="users-edit">
+    <h1>{{ user.name }}</h1>
+    <p>Password: {{ user.password }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Address: {{ user.address }}</p>
+    <p>Bio: {{ user.bio }}</p>
+    <p>Avatar: {{ user.avatar }}</p>
+  </div> -->

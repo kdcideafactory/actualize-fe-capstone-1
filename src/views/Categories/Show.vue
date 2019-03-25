@@ -17,7 +17,8 @@ export default {
   data: function() {
     return {
       category: {},
-      product: {}
+      product: {},
+      errors: []
     };
   },
   created: function() {
@@ -29,3 +30,33 @@ export default {
   methods: {}
 };
 </script>
+
+
+<!-- 
+  created: function() {
+    axios.get("/api/products").then(response => {
+      this.products = response.data;
+    });
+  },
+  methods: {
+    createImage: function() {
+      var params = {
+        product_id: this.product_id,
+        url: this.url
+      };
+      axios
+        .patch("/api/images/" + this.image.id, params)
+        .then(response => {
+          console.log(response.data);
+          this.$router.push("/images/me");
+        })
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        });
+ -->
+
+<!-- <ul id="example-1">
+  <li v-for="item in items">
+    {{ item.message }}
+  </li>
+</ul> -->

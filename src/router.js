@@ -22,8 +22,8 @@ import ProductsShow from "./views/Products/Show.vue";
 import MessagesIndex from "./views/Messages/Index.vue";
 import MessagesShow from "./views/Messages/Show.vue";
 
-import ImagesIndex from "./views/Images/Index.vue";
-import ImagesShow from "./views/Images/Show.vue";
+import ImagesNew from "./views/Images/New";
+
 
 Vue.use(Router);
 
@@ -102,14 +102,9 @@ export default new Router({
       component: MessagesShow
     },
     {
-      path: "/images",
-      name: "images-index",
-      component: ImagesIndex
+      path: "/images/new",
+      name: "images-new",
+      component: ImagesNew
     },
-    {
-      path: "/images/:id",
-      name: "images-show",
-      component: ImagesShow
-    }
   ]
 });

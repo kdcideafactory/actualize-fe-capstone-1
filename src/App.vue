@@ -21,6 +21,7 @@
       <router-link to="/messages">Messages Index</router-link> |
       <router-link to="/messages/:id">Messages Show</router-link> |
 
+      <router-link to="/images/new">Images New</router-link> |
       <router-link to="/images">Images Index</router-link> |
       <router-link to="/images/:id">Images Show</router-link>
 

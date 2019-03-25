@@ -27,10 +27,13 @@
         <label>Quantity on Hand:</label> 
         <input type="text" class="form-control" v-model="qoh">
       </div>
-
-      <div>
-        <button v-on:click="createProduct()">Create Product</button>
+      <div class="form-group">
+        <label>Image Url:</label> 
+        <input type="text" class="form-control" v-model="url">
       </div>
+        <div>
+          <button v-on:click="createProduct()">Create Product</button>
+        </div>
     </div>
   </div>
 </template>
@@ -46,7 +49,9 @@ export default {
       description: "",
       price: "",
       qoh: "",
+      url: "",
       categories: [],
+      images: [],
       errors: []
     };
   },
@@ -55,6 +60,7 @@ export default {
       this.categories = response.data;
     });
   },
+
   methods: {
     createProduct: function() {
       var params = {
@@ -62,12 +68,13 @@ export default {
         name: this.name,
         description: this.description,
         price: this.price,
-        qoh: this.qoh
+        qoh: this.qoh,
+        url: this.url
       };
       axios
         .post("/api/products", params)
         .then(response => {
-          this.$router.push("/users/me");
+          this.$router.push("/products/" + response.data.id);
         })
         .catch(error => {
           this.errors = error.response.data.errors;

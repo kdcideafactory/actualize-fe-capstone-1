@@ -1,11 +1,5 @@
-<template>
+xc<template>
   <div class="users-show">
-    Name: <input type="text" v-model="newUserName">
-    Email: <input type="email" v-model="newUserEmail">
-    Password: <input type="password" v-model="newUserPassword">
-    Address: <input type="text" v-model="newUserAddress">
-    Bio: <input type="text" v-model="newUserBio">
-    Avatar: <input type="te" v-model="newUserBio">
     <h1>{{ user.name }}</h1>
     <p>Email: {{ user.email }}</p>
     <p>Address: {{ user.address }}</p>
@@ -15,6 +9,10 @@
 </template>
 
 <style>
+img {
+  width: 150px;
+  border-radius: 2px;
+}
 </style>
 
 <script>
@@ -23,7 +21,8 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      user: {}
+      user: {},
+      errors: []
     };
   },
   created: function() {
