@@ -1,4 +1,6 @@
 xc<template>
+
+
   <div class="users-show">
     <h1>{{ user.name }}</h1>
     <p>Email: {{ user.email }}</p>
@@ -6,6 +8,9 @@ xc<template>
     <p>Bio: {{ user.bio }}</p>
     <img :src="user.avatar">
   </div>
+
+
+
 </template>
 
 <style>
