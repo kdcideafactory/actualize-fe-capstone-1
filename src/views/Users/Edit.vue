@@ -96,6 +96,12 @@ export default {
 };
 </script>
 
+
+<!-- This process works great and and the user signs up, they are pushed to the login vue. -->
+
+
+
+
 <!--   <div class="users-edit">
     <h1>{{ user.name }}</h1>
     <p>Password: {{ user.password }}</p>

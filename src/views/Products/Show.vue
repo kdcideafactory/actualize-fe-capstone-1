@@ -1,30 +1,26 @@
 <template>
-  <div class="images-new">
-    
-    <div class="container">
 
-      <h1>New Image</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Product Id:</label> 
-        <input type="text" class="form-control" v-model="product_id">
-      </div>
-      <ul v-for="image in images">
-        <li>
-          <a v-bind:href="'#/image/' + product.id">
-            <img v-bind:src="image.imageUrl">
-          </a>
-        </li>
-      </ul>
-
-      <div>
-        <button v-on:click="createProduct()">Create Image</button>
-      </div>
+  <div class="products-show">
+    <div v-for="product in products">
+      <h1>{{ product.id }}</h1>
     </div>
+
+    <h1>{{ user.name }} +'s Products Profile Page</h1>
+
+    <p>Product Name: {{ product.name }}</p>
+    <p>Description: {{ product.description }}</p>
+    <p>Price: {{ product.price }}</p>
+    <p>Quantity on Hand: {{ product.qoh }}</p>
   </div>
+
 </template>
+
+<style>
+img {
+  width: 150px;
+  border-radius: 2px;
+}
+</style>
 
 <script>
 import axios from "axios";
@@ -32,35 +28,16 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      product_id: "",
-      url: "",
+      user: {},
       errors: []
     };
   },
   created: function() {
-    axios.get("/api/images").then(response => {
-      this.images = response.data;
+    axios.get("/api/users/" + this.$route.params.id).then(response => {
+      console.log(response.data);
+      this.user = response.data;
     });
   },
-
-  methods: {
-    createProduct: function() {
-      var params = {
-        product_id: this.product_id,
-        url: this.url
-      };
-
-      axios
-        .post("/api/images", params)
-        .then(response => {
-          this.$router.push("/images/" + response.data.id);
-        })
-        .catch(error => {
-          this.errors = error.response.data.errors;
-        });
-    }
-  }
+  methods: {}
 };
 </script>
-
-
