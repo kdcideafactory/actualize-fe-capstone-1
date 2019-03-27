@@ -2,7 +2,7 @@
 
 
   <div class="users-show">
-    <h1>{{ user.name }} +'s Profile Page</h1>
+    <h1>{{ user.name }}'s Profile Page</h1>
     <h3>Update Profile</h3>
     <p>Email: {{ user.email }}</p>
     <p>Address: {{ user.address }}</p>
@@ -13,10 +13,11 @@
     <div>
       <button><router-link to="/users/me/edit">Edit User Profile</router-link></button>
       <button class="btn btn-danger" v-on:click="destroyUser()">Delete User</button>
-    </div>
+    </div><br>
     <div class="row">
     <div v-for="product in products" class="col-md-4">
-      <div class="card" style="border: none">d
+      <div class="card" style="border: none">
+        <img class="card-img-top" :src="product.images[0].url" alt="Card image cap">
         <div class="card-body">
         <h6>{{ product.name }}</h6>
         <p>Description: {{ product.description }}</p>
@@ -33,7 +34,7 @@
 
 <style>
 img {
-  width: 150px;
+  width: 50px;
   border-radius: 2px;
 }
 </style>

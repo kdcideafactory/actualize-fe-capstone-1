@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <h1>Start Page</h1>
+    <h1>THIS IS THE HOME PAGE CURRENTLY UNDER CONSTRUCTION</h1>
+  
   </div>
 </template>
 

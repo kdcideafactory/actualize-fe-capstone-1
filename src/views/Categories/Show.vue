@@ -4,14 +4,15 @@
 
     <div class="row">
     <div v-for="product in category.products" class="col-md-4">
-      <div class="card" style="border: none">d
+      <div class="card" style="border: none">
+        <img class="card-img-top" :src="product.images[0].url" alt="Card image cap">
         <div class="card-body">
         <h6>{{ product.name }}</h6>
         <p>Description: {{ product.description }}</p>
         <p>Price: {{ product.price }}</p>
         <p>Quantity on Hand: {{ product.qoh }}</p>
         <p>Lister: {{ product.user_name }}</p><br>
-        <button  class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#messageNew">Contact Lister</button>
+        <button  class="btn btn-outline-secondary btn-sm" v-on:click="setProduct(product)" data-toggle="modal" data-target="#messageNew">Contact Lister</button>
         </div>
       </div>
     </div>
@@ -34,7 +35,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send Message</button>
+          <button type="button" class="btn btn-primary" v-on:click="sendMessage(product,message)" data-dismiss="modal">Send Message</button>
         </div>
       </div>
     </div>
@@ -62,7 +63,31 @@ export default {
       this.category = response.data;
     });
   },
-  methods: {}
+  methods: {
+    setProduct: function(product) {
+      this.product = product;
+    },
+
+    sendMessage: function(product, message) {
+      console.log(product, message);
+      var params = {
+        product_id: product.id,
+        recipient_id: product.user_id,
+        body: message
+      };
+      console.log(params);
+      axios
+        .post("/api/conversations", params)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    }
+  }
 };
 </script>
 
