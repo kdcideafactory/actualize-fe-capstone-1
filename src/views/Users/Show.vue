@@ -27,7 +27,16 @@
       </div>
     </div>
     </div>
-    <button class="btn btn-success"><router-link style="color: white" to="/products/new">List New Product</router-link></button>
+    <button class="btn btn-success"><router-link style="color: white" to="/products/new">List New Product</router-link></button><br>
+    <div><h3> Mailbox </h3></div>
+    <div class="row">
+      <div v-for="conversation in user.conversations" class="col-md-6">
+        <div class="card">
+          <h5><router-link to="/conversations/ + conversation.id">{{ conversation.product_name }}</router-link></h5>
+          <p>From: {{ conversation.sender_id }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 
 </template>
