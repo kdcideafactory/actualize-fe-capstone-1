@@ -1,22 +1,35 @@
 <template>
   <div class="login">
-    <div class="container">
-      <form v-on:submit.prevent="submit()">
-        <h1>Login</h1>
-        <ul>
-          <li class="text-danger" v-for="error in errors">{{ error }}</li>
-        </ul>
-        <div class="form-group">
-          <label>Email:</label>
-          <input type="email" class="form-control" v-model="email">
+
+
+    <!-- Projects Section -->
+      <section class="projects-section">
+        <div class="container">
+
+          <div class="row">
+
+            <form class="col-6 mx-auto text-center" v-on:submit.prevent="submit()">
+              <h1>Login</h1>
+              <ul>
+                <li class="text-danger" v-for="error in errors">{{ error }}</li>
+              </ul>
+              <div class="form-group">
+                <label>Email:</label>
+                <input type="email" class="form-control" v-model="email">
+              </div>
+              <div class="form-group">
+                <label>Password:</label>
+                <input type="password" class="form-control" v-model="password">
+              </div>
+              <input type="submit" class="btn btn-warning" value="Submit">
+            </form>
+
+          </div>
+
+
         </div>
-        <div class="form-group">
-          <label>Password:</label>
-          <input type="password" class="form-control" v-model="password">
-        </div>
-        <input type="submit" class="btn btn-primary" value="Submit">
-      </form>
-    </div>
+      </section>
+
   </div>
 </template>
 

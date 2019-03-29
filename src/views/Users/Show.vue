@@ -1,50 +1,62 @@
 <template>
-
-
   <div class="users-show">
-    <h1>{{ user.name }}'s Profile Page</h1>
-    <h3>Update Profile</h3>
-    <p>Email: {{ user.email }}</p>
-    <p>Address: {{ user.address }}</p>
-    <p>Bio: {{ user.bio }}</p>
-    <img :src="user.avatar">
 
 
-    <div>
-      <button><router-link to="/users/me/edit">Edit User Profile</router-link></button>
-      <button class="btn btn-danger" v-on:click="destroyUser()">Delete User</button>
-    </div><br>
-    <div class="row">
-    <div v-for="product in products" class="col-md-4">
-      <div class="card" style="border: none">
-        <img class="card-img-top" :src="product.images[0].url" alt="Card image cap">
-        <div class="card-body">
-        <h6>{{ product.name }}</h6>
-        <p>Description: {{ product.description }}</p>
-        <p>Price: {{ product.price }}</p>
-        <p>Quantity on Hand: {{ product.qoh }}</p>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+      <div class="container">
+
+        
+        <div class="row">
+          <div class="col-6">
+            <img class="user-avatar" :src="user.avatar"><br>
+            <router-link class="btn btn-warning" to="/users/me/edit">Edit User Profile</router-link>
+          </div>
+          <div class="col-6">
+            <p>Email: {{ user.email }}</p>
+            <p>Address: {{ user.address }}</p>
+            <p>Bio: {{ user.bio }}</p>
+          </div>
         </div>
-      </div>
-    </div>
-    </div>
-    <button class="btn btn-success"><router-link style="color: white" to="/products/new">List New Product</router-link></button><br>
-    <div><h3> Mailbox </h3></div>
-    <div class="row">
-      <div v-for="conversation in user.conversations" class="col-md-6">
-        <div class="card">
-          <h5><router-link to="/conversations/ + conversation.id">{{ conversation.product_name }}</router-link></h5>
-          <p>From: {{ conversation.sender_id }}</p>
+      
+
+        <div class="col-md-10 col-lg-8 mx-auto text-center pt-100">
+
+          <h2 class="mb-5">Your Products</h2>
+
         </div>
+
+        <div class="row">
+
+          <div v-for="product in products" class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <img class="card-img-top" :src="product.images[0].url" alt="Card image cap">
+                <h4 class="text-uppercase m-0">{{ product.name }}</h4>
+                <hr class="my-4">
+                <div class="small text-black-50">Price: {{ product.price }}</div>
+                <div class="small text-black-50">Quantity on Hand: {{ product.qoh }}</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-    </div>
+    </section>
+
   </div>
-
 </template>
 
 <style>
-img {
-  width: 50px;
+.user-avatar {
+  width: 100px;
   border-radius: 2px;
+}
+
+.pt-100 {
+  padding-top: 100px;
 }
 </style>
 
@@ -69,13 +81,6 @@ export default {
       this.products = response.data;
     });
   },
-  methods: {
-    destroyUser: function() {
-      axios.delete("/api/users/" + this.user.id).then(response => {
-        console.log("Sorry to see you go.", response.data);
-        this.$router.push("/");
-      });
-    }
-  }
+  methods: {}
 };
 </script>

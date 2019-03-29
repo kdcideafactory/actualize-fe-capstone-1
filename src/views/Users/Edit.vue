@@ -1,42 +1,56 @@
 <template>
   <div class="users-edit">
-    <h1> Logged in as: {{ user.name }}!</h1>
-    
-  <form v-on:submit.prevent="submit()">
-        <h1>Update User Profile</h1>
-        <ul>
-          <li class="text-danger" v-for="error in errors">{{ error }}</li>
-        </ul>
-        <div class="form-group">
-          <label>Name:</label> 
-          <input type="text" class="form-control" v-model="user.name">
-        </div>
-        <div class="form-group">
-          <label>Password:</label> 
-          <input type="password" class="form-control" v-model="user.password">
-        </div>
-        <div class="form-group">
-          <label>Password Confirmation:</label> 
-          <input type="password" class="form-control" v-model="user.password_confirmation">
-        </div>
-        <div class="form-group">
-          <label>Email:</label>
-          <input type="email" class="form-control" v-model="user.email">
-        </div>
-        <div class="form-group">
-          <label>Bio:</label>
-          <input type="text" class="form-control" v-model="user.bio">
-        </div>
-        <div class="form-group">
-          <label>Avatar:</label>
-          <input type="text" class="form-control" v-model="user.avatar">
-        </div>
-        
-        
-        <input type="submit" class="btn btn-primary" value="Submit">
-      </form>
 
-<!--   <button v-on:click="destroyUser()">Burn with Fire</button><br> -->
+
+    <!-- Projects Section -->
+      <section class="projects-section">
+        <div class="container">
+
+          <div class="row">
+
+            <form class="col-6 mx-auto text-center" v-on:submit.prevent="submit()">
+              <h1>Update User Profile</h1>
+              <ul>
+                <li class="text-danger" v-for="error in errors">{{ error }}</li>
+              </ul>
+              <div class="form-group">
+                <label>Name:</label> 
+                <input type="text" class="form-control" v-model="user.name">
+              </div>
+              <div class="form-group">
+                <label>Password:</label> 
+                <input type="password" class="form-control" v-model="user.password">
+              </div>
+              <div class="form-group">
+                <label>Password Confirmation:</label> 
+                <input type="password" class="form-control" v-model="user.password_confirmation">
+              </div>
+              <div class="form-group">
+                <label>Email:</label>
+                <input type="email" class="form-control" v-model="user.email">
+              </div>
+              <div class="form-group">
+                <label>Bio:</label>
+                <input type="text" class="form-control" v-model="user.bio">
+              </div>
+              <div class="form-group">
+                <label>Avatar:</label>
+                <input type="text" class="form-control" v-model="user.avatar">
+              </div>
+              
+              
+              <input type="submit" class="btn btn-warning" value="Submit"> 
+              |
+              <button class="btn btn-danger" v-on:click="destroyUser()">Delete User</button>
+            </form>
+
+          </div>
+
+
+        </div>
+      </section>
+
+
   </div>
 </template>
 

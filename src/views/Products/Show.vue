@@ -17,7 +17,7 @@
 
 <style>
 img {
-  width: 150px;
+  width: 50px;
   border-radius: 2px;
 }
 </style>

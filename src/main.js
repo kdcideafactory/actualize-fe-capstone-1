@@ -4,6 +4,7 @@ import router from "./router";
 import axios from "axios";
 import Vuetify from "vue";
 import BootstrapVue from "bootstrap-vue";
+import moment from "moment";
 
 axios.defaults.baseURL = 
   process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
